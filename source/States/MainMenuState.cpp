@@ -1,6 +1,7 @@
 #include "States/MainMenuState.hpp"
 #include "States/DifficultySelectState.hpp"
 #include "States/PlayingState.hpp"
+#include "States/HelpState.hpp"
 #include "Game/Config.hpp"
 #include <iostream>
 #include <cstdlib>
@@ -120,8 +121,8 @@ namespace Minesweeper {
         });
         
         menu_->addItem("COMMENT JOUER", [this]() {
-            std::cout << "Help menu selected" << std::endl;
-            // À implémenter plus tard
+            auto help = std::make_unique<HelpState>(window_, stateManager_);
+            stateManager_.pushState(std::move(help));
         });
         
         menu_->addItem("QUITTER", [this]() {
