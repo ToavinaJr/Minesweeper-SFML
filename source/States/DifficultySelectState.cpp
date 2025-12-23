@@ -46,7 +46,7 @@ namespace Minesweeper {
         menu_->setFont(font_);
         menu_->setTitle("SELECTION DE DIFFICULTE");
         // Slightly smaller text for the difficulty selection screen
-        menu_->setTitleSize(36);
+        menu_->setTitleSize(28);
         menu_->setItemSize(24);
         menu_->setPosition(Config::WINDOW_WIDTH / 2.0f, 140);
         menu_->setSpacing(40);

@@ -122,7 +122,7 @@ namespace Minesweeper {
         // Draw label above counter
         sf::Text labelText;
         labelText.setFont(assetManager_->getFont());
-        labelText.setString("MINES LEFT");
+        labelText.setString("Mines restantes");
         labelText.setCharacterSize(16);
         labelText.setFillColor(sf::Color::White);
         labelText.setPosition(30, 5);
@@ -162,7 +162,7 @@ namespace Minesweeper {
         // Draw label above timer
         sf::Text labelText;
         labelText.setFont(assetManager_->getFont());
-        labelText.setString("TIME");
+        labelText.setString("Temps");
         labelText.setCharacterSize(16);
         labelText.setFillColor(sf::Color::White);
         labelText.setPosition(Config::WINDOW_WIDTH - 170, 5);

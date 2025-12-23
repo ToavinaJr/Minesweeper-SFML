@@ -17,7 +17,7 @@ namespace Minesweeper {
 
     void HelpState::createHelpText() {
         helpText_.setFont(font_);
-        helpText_.setString("But:\nReveal all non-mine tiles. Use left click to reveal a tile, right click to flag a mine.\n\nConseils:\n- Commencez par révéler les coins.\n- Utilisez les chiffres pour déduire où se trouvent les mines.\n- Faites attention aux drapeaux.\n");
+        helpText_.setString("But:\nTrouver toutes les mines \nUtilisez le clic gauche pour rEvEler une case, \nle clic droit pour marquer une mine.\n\nConseils:\n- Commencez par rEvEler les coins.\n- Utilisez les chiffres pour dEduire \noU se trouvent les mines.\n- Faites attention aux drapeaux.\n");
         helpText_.setCharacterSize(18);
         helpText_.setFillColor(sf::Color(220,220,220));
     }
