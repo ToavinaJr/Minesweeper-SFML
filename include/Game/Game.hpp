@@ -1,8 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <memory>
+#include "Config.hpp"
 #include "../States/StateManager.hpp"
-
 namespace Minesweeper {
     class Game {
     public:
@@ -10,6 +10,9 @@ namespace Minesweeper {
         ~Game();
         
         void run();
+        
+        // Getter for state manager (to pass to states)
+        StateManager& getStateManager() { return stateManager_; }
         
     private:
         sf::RenderWindow window_;
@@ -19,7 +22,7 @@ namespace Minesweeper {
         void initializeWindow();
         void initializeStates();
         void processEvents();
-        void update(float deltaTime); // CHANGEMENT ICI : ajout du paramètre deltaTime
+        void update(float deltaTime);
         void render();
     };
 }

@@ -1,4 +1,4 @@
-#include "../include/States/StateManager.hpp"
+#include "../../include/States/StateManager.hpp"
 
 namespace Minesweeper {
     void StateManager::pushState(std::unique_ptr<GameState> state) {

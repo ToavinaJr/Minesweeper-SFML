@@ -1,5 +1,5 @@
 #pragma once
-#include "GameState.hpp"
+#include "StateWithManager.hpp"
 #include "../Logic/GameLogic.hpp"
 #include "../Renderer/Renderer.hpp"
 #include "../Renderer/AssetManager.hpp"
@@ -8,9 +8,9 @@
 #include <memory>
 
 namespace Minesweeper {
-    class PlayingState : public GameState {
+    class PlayingState : public StateWithManager {
     public:
-        PlayingState(sf::RenderWindow& window);
+        PlayingState(sf::RenderWindow& window, StateManager& stateManager);
         
         void handleEvents(sf::RenderWindow& window) override;
         void update(float deltaTime) override;

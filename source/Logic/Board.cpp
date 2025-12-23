@@ -1,4 +1,4 @@
-#include "../include/Logic/Board.hpp"
+#include "../../include/Logic/Board.hpp"
 #include <random>
 #include <queue>
 #include <utility>

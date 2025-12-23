@@ -1,5 +1,5 @@
 #include "Game/Game.hpp"
-#include "States/PlayingState.hpp"
+#include "States/MainMenuState.hpp"
 #include <iostream>
 
 namespace Minesweeper {
@@ -19,9 +19,9 @@ namespace Minesweeper {
     }
 
     void Game::initializeStates() {
-        // Start with playing state
-        auto playingState = std::make_unique<PlayingState>(window_);
-        stateManager_.pushState(std::move(playingState));
+        // Start with main menu - passe les 2 arguments requis
+        auto mainMenuState = std::make_unique<MainMenuState>(window_, stateManager_);
+        stateManager_.pushState(std::move(mainMenuState));
     }
 
     void Game::run() {
@@ -31,7 +31,7 @@ namespace Minesweeper {
             float deltaTime = frameClock.restart().asSeconds();
             
             processEvents();
-            update(deltaTime); // CHANGEMENT ICI : passe deltaTime en paramètre
+            update(deltaTime);
             render();
         }
     }
@@ -40,7 +40,7 @@ namespace Minesweeper {
         stateManager_.handleEvents(window_);
     }
 
-    void Game::update(float deltaTime) { // CHANGEMENT ICI : ajout du paramètre
+    void Game::update(float deltaTime) {
         stateManager_.update(deltaTime);
     }
 

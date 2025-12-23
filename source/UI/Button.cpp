@@ -1,4 +1,4 @@
-#include "../include/UI/Button.hpp"
+#include "../../include/UI/Button.hpp"
 #include <iostream>
 
 namespace Minesweeper {
