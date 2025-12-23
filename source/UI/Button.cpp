@@ -66,6 +66,34 @@ namespace Minesweeper {
         onClick_ = callback;
     }
 
+    void Button::setSelected(bool selected) {
+        isSelected_ = selected;
+        updateColors();
+    }
+
+    void Button::setTextSize(unsigned int size) {
+        text_.setCharacterSize(size);
+        // Re-center text
+        sf::FloatRect textBounds = text_.getLocalBounds();
+        text_.setOrigin(textBounds.left + textBounds.width / 2.0f,
+                       textBounds.top + textBounds.height / 2.0f);
+        sf::Vector2f position = shape_.getPosition();
+        sf::Vector2f sizeRect = shape_.getSize();
+        text_.setPosition(position.x + sizeRect.x / 2.0f,
+                         position.y + sizeRect.y / 2.0f);
+    }
+
+    void Button::setEnabled(bool enabled) {
+        isEnabled_ = enabled;
+        updateColors();
+    }
+
+    void Button::invoke() {
+        if (onClick_ && isEnabled_) {
+            onClick_();
+        }
+    }
+
     void Button::handleEvent(const sf::Event& event, const sf::RenderWindow& window) {
         if (event.type == sf::Event::MouseMoved) {
             update(sf::Mouse::getPosition(window));
@@ -105,14 +133,26 @@ namespace Minesweeper {
     }
 
     void Button::updateColors() {
+        if (!isEnabled_) {
+            shape_.setFillColor(sf::Color(60, 60, 70));
+            text_.setFillColor(sf::Color(160, 160, 160));
+            return;
+        }
+
         if (isPressed_) {
             shape_.setFillColor(clickColor_);
         }
+        else if (isSelected_) {
+            shape_.setFillColor(hoverColor_);
+            text_.setFillColor(sf::Color::Yellow);
+        }
         else if (isMouseOver_) {
             shape_.setFillColor(hoverColor_);
+            text_.setFillColor(sf::Color::White);
         }
         else {
             shape_.setFillColor(normalColor_);
+            text_.setFillColor(sf::Color::White);
         }
     }
 }

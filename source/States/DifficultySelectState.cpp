@@ -45,8 +45,11 @@ namespace Minesweeper {
         menu_ = std::make_unique<Menu>(window_);
         menu_->setFont(font_);
         menu_->setTitle("SELECTION DE DIFFICULTE");
-        menu_->setPosition(Config::WINDOW_WIDTH / 2.0f, 150);
-        menu_->setSpacing(50);
+        // Slightly smaller text for the difficulty selection screen
+        menu_->setTitleSize(36);
+        menu_->setItemSize(24);
+        menu_->setPosition(Config::WINDOW_WIDTH / 2.0f, 140);
+        menu_->setSpacing(40);
         
         // Menu items
         menu_->addItem("DEBUTANT (9x9 - 10 mines)", [this]() {
@@ -108,7 +111,7 @@ namespace Minesweeper {
                           std::to_string(settings.height) + 
                           " | Mines: " + std::to_string(settings.mines));
         
-        infoText.setCharacterSize(20);
+        infoText.setCharacterSize(18);
         infoText.setFillColor(sf::Color::Yellow);
         infoText.setStyle(sf::Text::Bold);
         
@@ -120,7 +123,7 @@ namespace Minesweeper {
         sf::Text controlsText;
         controlsText.setFont(font_);
         controlsText.setString("ECHAP : Retour | ↑↓ : Navigation | ENTREE : Sélectionner");
-        controlsText.setCharacterSize(14);
+        controlsText.setCharacterSize(12);
         controlsText.setFillColor(sf::Color(200, 200, 200, 150));
         controlsText.setPosition(10, Config::WINDOW_HEIGHT - 25);
         window.draw(controlsText);

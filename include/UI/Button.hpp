@@ -26,6 +26,13 @@ namespace Minesweeper {
         
         // State
         bool isMouseOver() const { return isMouseOver_; }
+        // Additional styling/state APIs
+        void setSelected(bool selected);
+        void setTextSize(unsigned int size);
+        void setEnabled(bool enabled);
+        bool isEnabled() const { return isEnabled_; }
+        // Invoke the click callback directly (used by Menu to activate programmatically)
+        void invoke();
         
     private:
         sf::RectangleShape shape_;
@@ -37,6 +44,8 @@ namespace Minesweeper {
         std::function<void()> onClick_;
         bool isMouseOver_ = false;
         bool isPressed_ = false;
+        bool isSelected_ = false;
+        bool isEnabled_ = true;
         
         void updateColors();
     };

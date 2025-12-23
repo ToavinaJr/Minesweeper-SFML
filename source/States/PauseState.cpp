@@ -17,16 +17,23 @@ namespace Minesweeper {
         
         overlay_.setSize(sf::Vector2f(Config::WINDOW_WIDTH, Config::WINDOW_HEIGHT));
         overlay_.setFillColor(sf::Color(0, 0, 0, 180));
-        
+         
         initializeMenu();
     }
     
     void PauseState::initializeMenu() {
         menu_ = std::make_unique<Menu>(window_);
         menu_->setFont(font_);
-        menu_->setTitle("⏸JEU EN ");
-        menu_->setPosition(Config::WINDOW_WIDTH / 2.0f, Config::WINDOW_HEIGHT / 3.0f);
-        menu_->setSpacing(50);
+        menu_->setTitle("JEU EN PAUSE");
+        // Slightly smaller title and item sizes for pause menu
+        menu_->setTitleSize(36);
+        menu_->setItemSize(20);
+
+        // Align menu position with the menu background so items are inside the panel
+        float menuBgY = (Config::WINDOW_HEIGHT - 400) / 3.0f;
+        float menuY = menuBgY + 40.0f; // small top padding inside the background
+        menu_->setPosition(Config::WINDOW_WIDTH / 2.0f, menuY);
+        menu_->setSpacing(48);
         
         // Items du menu pause
         menu_->addItem("REPRENDRE LA PARTIE", [this]() {
@@ -44,7 +51,7 @@ namespace Minesweeper {
             // À implémenter
         });
         
-        menu_->addItem("CHANGER DE DIFFICULTÉ", [this]() {
+        menu_->addItem("CHANGER DE DIFFICULTE", [this]() {
             std::cout << "Changement de difficulté depuis la pause" << std::endl;
             // À implémenter - retourner au menu de sélection
         });
@@ -97,9 +104,6 @@ namespace Minesweeper {
     }
     
     void PauseState::render(sf::RenderWindow& window) {
-        // L'état de jeu est déjà rendu en arrière-plan par PlayingState
-        // On dessine juste l'overlay par-dessus
-        
         window.draw(overlay_);
         
         // Cadre pour le menu
@@ -110,20 +114,7 @@ namespace Minesweeper {
         menuBackground.setPosition((Config::WINDOW_WIDTH - 500) / 2, 
                                   (Config::WINDOW_HEIGHT - 400) / 3);
         window.draw(menuBackground);
-        
-        // Titre avec effet
-        sf::Text pauseTitle;
-        pauseTitle.setFont(font_);
-        pauseTitle.setString("JEU EN PAUSE");
-        pauseTitle.setCharacterSize(42);
-        pauseTitle.setFillColor(sf::Color::Yellow);
-        pauseTitle.setStyle(sf::Text::Bold);
-        
-        sf::FloatRect titleBounds = pauseTitle.getLocalBounds();
-        pauseTitle.setPosition((Config::WINDOW_WIDTH - titleBounds.width) / 2, 
-                              (Config::WINDOW_HEIGHT - 400) / 3 + 20);
-        window.draw(pauseTitle);
-        
+                
         // Rendre le menu
         menu_->render();
         
@@ -140,22 +131,10 @@ namespace Minesweeper {
                                 Config::WINDOW_HEIGHT - 80);
         window.draw(controlsText);
         
-        // Statistiques de la partie en cours (exemple)
-        sf::Text statsText;
-        statsText.setFont(font_);
-        statsText.setString("Partie en cours: 16x16 - 40 mines | Temps: 00:45 | Mines restantes: 32");
-        statsText.setCharacterSize(14);
-        statsText.setFillColor(sf::Color(180, 220, 180));
-        
-        sf::FloatRect statsBounds = statsText.getLocalBounds();
-        statsText.setPosition((Config::WINDOW_WIDTH - statsBounds.width) / 2, 
-                             (Config::WINDOW_HEIGHT - 400) / 3 + 350);
-        window.draw(statsText);
-        
         // Message d'aide
         sf::Text helpText;
         helpText.setFont(font_);
-        helpText.setString("Votre progression est sauvegardée. Reprenez quand vous voulez !");
+        helpText.setString("Votre progression est sauvegardee. Reprenez quand vous voulez !");
         helpText.setCharacterSize(12);
         helpText.setFillColor(sf::Color(150, 150, 180, 200));
         

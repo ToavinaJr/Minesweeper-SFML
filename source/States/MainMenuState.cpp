@@ -141,9 +141,6 @@ namespace Minesweeper {
                     window.close();
                 }
             }
-            else if (event.type == sf::Event::MouseMoved) {
-                // La souris est gérée directement par Menu::handleEvent
-            }
             
             menu_->handleEvent(event);
         }
@@ -170,7 +167,7 @@ namespace Minesweeper {
         // Informations de version
         sf::Text versionText;
         versionText.setFont(font_);
-        versionText.setString("Version 2.0 | Développé avec SFML");
+        versionText.setString("Version 2.0 | Developpe avec SFML");
         versionText.setCharacterSize(14);
         versionText.setFillColor(sf::Color(180, 180, 220, 180));
         versionText.setStyle(sf::Text::Italic);
@@ -180,7 +177,7 @@ namespace Minesweeper {
         // Contrôles
         sf::Text controlsText;
         controlsText.setFont(font_);
-        controlsText.setString("↑↓ ou WASD : Navigation | ENTREE : Sélectionner | ECHAP : Quitter");
+        controlsText.setString("UP/DOWN ou WASD : Navigation | ENTREE : Selectionner | ECHAP : Quitter");
         controlsText.setCharacterSize(14);
         controlsText.setFillColor(sf::Color(200, 200, 200, 180));
         
@@ -192,7 +189,7 @@ namespace Minesweeper {
         // Crédits
         sf::Text creditsText;
         creditsText.setFont(font_);
-        creditsText.setString("Un classique revisité - Amusez-vous !");
+        creditsText.setString("Un classique revisite - Amusez-vous !");
         creditsText.setCharacterSize(16);
         creditsText.setFillColor(sf::Color(255, 215, 0, 200)); // Or
         creditsText.setStyle(sf::Text::Bold);
@@ -205,9 +202,8 @@ namespace Minesweeper {
         // Afficher les statistiques du dernier jeu (si disponibles)
         sf::Text statsText;
         statsText.setFont(font_);
-        statsText.setString("Dernière partie: 16x16 - 40 mines - Meilleur temps: --:--");
+        statsText.setString("Derniere partie: 16x16 - 40 mines - Meilleur temps: --:--");
         statsText.setCharacterSize(12);
-        statsText.setFillColor(sf::Color(150, 150, 180, 150));
         statsText.setPosition(Config::WINDOW_WIDTH - 320, 10);
         window.draw(statsText);
     }

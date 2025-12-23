@@ -25,7 +25,7 @@ namespace Minesweeper {
         
         // Tile configuration
         static constexpr int TILE_SIZE = 32;
-        static constexpr int UI_HEIGHT = 140;
+        static constexpr int UI_HEIGHT = 180;
         
         // Window configuration
         static constexpr int WINDOW_WIDTH = BOARD_WIDTH * TILE_SIZE;

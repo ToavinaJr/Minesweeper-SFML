@@ -295,9 +295,19 @@ namespace Minesweeper {
                 gameInfo.setFillColor(sf::Color(180, 180, 220));
                 
                 sf::FloatRect infoBounds = gameInfo.getLocalBounds();
+                // Position the progress text below the face button to avoid overlap
+                float faceTop = (Config::UI_HEIGHT - 70.0f) / 2.0f + 10.0f; // matches renderFaceButton layout
+                float faceBottom = faceTop + 70.0f;
+                float infoY = faceBottom + 6.0f; // small gap under the face button
+
+                // If computed position is too low, clamp it to a reasonable area inside the UI
+                if (infoY + infoBounds.height > static_cast<float>(Config::UI_HEIGHT) - 6.0f) {
+                    infoY = static_cast<float>(Config::UI_HEIGHT) - infoBounds.height - 6.0f;
+                }
+
                 gameInfo.setPosition(
-                    (Config::WINDOW_WIDTH - infoBounds.width) / 2 - infoBounds.left,
-                    40 // Position sous le titre
+                    (Config::WINDOW_WIDTH - infoBounds.width) / 2.0f - infoBounds.left,
+                    infoY
                 );
                 
                 window.draw(gameInfo);
